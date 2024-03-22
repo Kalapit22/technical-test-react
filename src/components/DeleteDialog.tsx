@@ -1,58 +1,58 @@
 import React from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
-import {variables} from '../config/config';
+import { variables } from '../config/config';
 
-
+// Definición de los tipos de propiedades para el componente DeleteDialog
 type DeleteDialogProps = {
-    open: boolean;
-    close: () => void;
-    selectedUserId: string;
-    onUserDelete:any;
+    open: boolean; // Indica si el diálogo está abierto o cerrado
+    close: () => void; // Función para cerrar el diálogo
+    selectedUserId: string; // ID del usuario seleccionado para eliminar
+    onUserDelete: any; // Función para manejar la eliminación del usuario
 };
 
-export const DeleteDialog: React.FC<DeleteDialogProps> = ({ open, close, selectedUserId,onUserDelete }) => {
+// Componente funcional DeleteDialog
+export const DeleteDialog: React.FC<DeleteDialogProps> = ({ open, close, selectedUserId, onUserDelete }) => {
 
-        const {API_KEY} = variables;
-        const API_URI = "https://dummyapi.io/data/v1/user/";
+    const { API_KEY } = variables; // Obtiene la API_KEY de la configuración
+    const API_URI = "https://dummyapi.io/data/v1/user/"; // URL base de la API
 
-
+    // Función para manejar la confirmación de eliminación del usuario
     const handleConfirm = async () => {
 
         try {
-             
-            const response = await fetch(`${API_URI}${selectedUserId}`,{
-                method:'DELETE',
-                headers:{
+            // Realiza una solicitud DELETE a la API para eliminar el usuario seleccionado
+            const response = await fetch(`${API_URI}${selectedUserId}`, {
+                method: 'DELETE',
+                headers: {
                     'Content-Type': 'application/json',
                     'app-id': API_KEY,
                 }
             });
 
             const data = await response.json();
-            
-            if(response.status !== 200) {
-                throw new Error(data.message)
-            }            
 
-            alert(`El usuario se elimino exitosamente con el ID: ${selectedUserId}`)
-            onUserDelete();
-            close();
-        } catch(err) {
+            // Si la respuesta no es exitosa, lanza un error con el mensaje de la API
+            if (response.status !== 200) {
+                throw new Error(data.message)
+            }
+
+            // Muestra una alerta con el ID del usuario eliminado exitosamente
+            alert(`El usuario se eliminó exitosamente con el ID: ${selectedUserId}`);
+            onUserDelete(); // Llama a la función onUserDelete para actualizar la lista de usuarios
+            close(); // Cierra el diálogo
+        } catch (err) {
             console.error(err)
         }
-        
-        close();
+
+        close(); // Cierra el diálogo
     };
 
-
-
-
-
+    // Renderiza el componente del diálogo
     return (
         <Dialog open={open} onClose={close}>
             <DialogTitle>Delete User</DialogTitle>
             <DialogContent>
-                <p>Esta seguro que quiere borrar el registro con el ID: {selectedUserId}?</p>
+                <p>¿Está seguro de que desea eliminar el registro con el ID: {selectedUserId}?</p>
             </DialogContent>
             <DialogActions>
                 <Button onClick={close} color="primary">

@@ -4,19 +4,19 @@ import { MenuItem } from '@mui/material';
 import { variables } from '../config/config';
 
 interface UpdateDialogProps {
-    open: boolean;
-    onClose: () => void;
-    selectedUserId: string;
-    onUpdate: () => void; 
+    open: boolean; // Indica si el diálogo está abierto o cerrado
+    onClose: () => void; // Función para cerrar el diálogo
+    selectedUserId: string; // ID del usuario seleccionado
+    onUpdate: () => void; // Función para actualizar la lista de usuarios en el componente padre
 }
 
 export const UpdateDialog: React.FC<UpdateDialogProps> = ({ open, onClose, selectedUserId, onUpdate }) => {
-    const [userData, setUserData] = useState<any>({});
-    const { API_KEY } = variables;
-    const API_URI = `https://dummyapi.io/data/v1/user/${selectedUserId}`;
+    const [userData, setUserData] = useState<any>({}); // Estado para almacenar los datos del usuario
+    const { API_KEY } = variables; // Clave de la API
+    const API_URI = `https://dummyapi.io/data/v1/user/${selectedUserId}`; // URL de la API para obtener los datos del usuario
 
     useEffect(() => {
-        if (!selectedUserId) return;
+        if (!selectedUserId) return; // Si no hay un ID de usuario seleccionado, no hacer nada
 
         const fetchUserData = async () => {
             try {
@@ -27,13 +27,13 @@ export const UpdateDialog: React.FC<UpdateDialogProps> = ({ open, onClose, selec
                     },
                 });
                 const data = await response.json();
-                setUserData(data);
+                setUserData(data); // Actualizar los datos del usuario en el estado
             } catch (error) {
                 console.error("Failed to fetch user data", error);
             }
         };
 
-        fetchUserData();
+        fetchUserData(); // Obtener los datos del usuario al cargar el componente o al cambiar el ID de usuario seleccionado
     }, [selectedUserId, open]); 
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,8 +56,8 @@ export const UpdateDialog: React.FC<UpdateDialogProps> = ({ open, onClose, selec
             });
             if (!response.ok) throw new Error('Failed to update user');
             alert('User updated successfully');
-            onUpdate(); // Refresca la lista de usuarios en el componente padre
-            onClose();
+            onUpdate(); // Actualizar la lista de usuarios en el componente padre
+            onClose(); // Cerrar el diálogo
         } catch (error) {
             console.error("Error updating user", error);
         }

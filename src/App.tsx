@@ -1,5 +1,5 @@
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
-import {Form2} from './components/Form2'
+import {Form2} from './components/Form'
 import Admin from './pages/Admin'
 
 

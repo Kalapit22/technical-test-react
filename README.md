@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# Prueba Técnica Finalizada
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es el resultado de la prueba técnica solicitada. Se ha desarrollado utilizando React con Vite, junto con Material UI para los componentes de la interfaz y un poco de Bootstrap para el diseño.
 
-Currently, two official plugins are available:
+## Ejecución del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para ejecutar el proyecto localmente, asegúrate de tener instalado [Node.js](https://nodejs.org/) y npm (viene con Node.js). Luego, sigue estos pasos:
 
-## Expanding the ESLint configuration
+1. Clona el repositorio a tu máquina local (o descarga el código fuente).
+2. Abre una terminal o línea de comandos y navega hasta el directorio del proyecto.
+3. Ejecuta el comando `npm install` para instalar las dependencias del proyecto.
+4. Una vez completada la instalación de las dependencias, inicia el servidor de desarrollo con:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+    ```bash
+    npm run dev
+    ```
 
-- Configure the top-level `parserOptions` property like this:
+5. Abre tu navegador y visita `http://localhost:5173/admin` para acceder a la sección administrativa donde se encuentra todo el trabajo realizado.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Tecnologías Utilizadas
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **React**: Utilizado para construir la interfaz de usuario de forma declarativa y eficiente.
+- **Material UI**: Un sistema de diseño reactivo para desarrollar interfaces de usuario rápidas y atractivas.
+- **Bootstrap**: Utilizado ocasionalmente para aplicar estilos rápidos y responsivos.
+- **Vite**: Como herramienta de construcción y desarrollo, ofreciendo un arranque rápido y un rebuild eficiente.
+
+## Características
+
+- La sección `/admin` del proyecto contiene todas las funcionalidades implementadas.
+- Se ha puesto especial atención en la usabilidad y el diseño responsivo.
+- La aplicación es completamente funcional con un frontend construido en React.
